@@ -57,5 +57,4 @@ Explorar na prática o uso de bibliotecas fundamentais e avançadas do ecossiste
 
 ---
 
-## 📁 Organização do Repositório
 
