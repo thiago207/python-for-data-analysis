@@ -1,60 +1,76 @@
-# modulos-python
+# 📊 Estudos em Análise e Ciência de Dados com Python
 
-# 📦 Estudos de Módulos e Bibliotecas em Python
-
-Este repositório contém meus estudos e experimentos com diversos **módulos nativos e externos do Python**, com foco especial em **Django**, além de outras ferramentas úteis para automação, manipulação de arquivos, imagens e muito mais.
-
-## 🧠 Objetivo
-
-Explorar na prática o uso de bibliotecas fundamentais e avançadas do ecossistema Python, com exemplos comentados, projetos pequenos e scripts úteis.
+Este repositório reúne meus estudos práticos com bibliotecas fundamentais para **análise de dados**, **visualização**, **web scraping**, **automação** e **ciência de dados** com Python. Os códigos são comentados, organizados por tema e voltados para a prática.
 
 ---
 
-## 📂 Módulos e Bibliotecas Estudadas
+## 🎯 Objetivo
 
-### 🔹 Módulos Nativos
-
-- [`csv`](https://docs.python.org/3/library/csv.html)  
-  Leitura e escrita de arquivos CSV para manipulação de dados tabulares.
-
-- [`datetime`](https://docs.python.org/3/library/datetime.html)  
-  Trabalhando com datas, horários e formatações.
-
-- [`os`](https://docs.python.org/3/library/os.html)  
-  Acesso ao sistema operacional: caminhos, arquivos, variáveis de ambiente, etc.
-
-- [`sys`](https://docs.python.org/3/library/sys.html)  
-  Argumentos de linha de comando, saída padrão e manipulação do interpretador Python.
-
-- [`json`](https://docs.python.org/3/library/json.html)  
-  Serialização e desserialização de dados no formato JSON.
+Dominar as principais ferramentas do ecossistema Python aplicadas ao tratamento, exploração, modelagem e visualização de dados — com foco em exemplos reais, mini projetos e scripts reutilizáveis.
 
 ---
 
-### 🖼️ Manipulação de Imagens
+## 🧰 Bibliotecas Estudadas
 
-- [`Pillow`](https://pillow.readthedocs.io/en/stable/)  
-  Redimensionamento, conversão, filtros e edição de imagens em Python.
+### 🧮 Manipulação e Análise de Dados
 
----
+- **pandas**  
+  Manipulação de tabelas, limpeza de dados, análise exploratória e integração com diversas fontes.
 
-### 🤖 Automação com Navegador
-
-- [`Selenium`](https://selenium.dev/)  
-  Automação de tarefas no navegador: web scraping, testes automatizados, interações com sites.
+- **numpy**  
+  Operações matemáticas e vetoriais com arrays de alto desempenho.
 
 ---
 
-### 🌐 Desenvolvimento Web com Django
+### 📊 Visualização de Dados
 
-- [`Django`](https://www.djangoproject.com/)  
-  Framework web de alto nível. Estudos incluem:
-  - Estrutura de projetos Django
-  - Modelos, views, templates
-  - Admin, migrations e ORM
-  - Autenticação e formulários
-  - API com Django Rest Framework *(em breve)*
+- **matplotlib**  
+  Gráficos estáticos altamente personalizáveis.
+
+- **seaborn**  
+  Visualizações estatísticas com foco em análise exploratória.
+
+- **plotly**  
+  Gráficos interativos e dashboards dinâmicos com suporte web.
 
 ---
 
+### 🔍 Web Scraping e Automação
 
+- **requests**  
+  Requisições HTTP para acesso a APIs e páginas web.
+
+- **BeautifulSoup**  
+  Extração de informações de HTML e XML.
+
+- **Selenium**  
+  Automação de interações com páginas web dinâmicas.
+
+---
+
+### 🧠 Machine Learning e Estatística
+
+- **scikit-learn**  
+  Modelos preditivos, pipelines e validação de algoritmos.
+
+- **scipy**  
+  Ferramentas científicas para estatísticas e álgebra linear.
+
+- **statsmodels**  
+  Modelos estatísticos clássicos e análise de séries temporais.
+
+---
+
+## 🚀 Outros Tópicos em Estudo
+
+- 📊 **Integração com Bancos de Dados**  
+  Análise de dados armazenados em **SQLite** e **PostgreSQL** utilizando `pandas` e `sqlalchemy`.
+
+- 🖥️ **Dashboards Interativos**  
+  Criação de aplicações visuais com **Streamlit** e **Dash** para apresentação de dados.
+
+- 🔌 **APIs para Dados**  
+  Desenvolvimento de APIs com **FastAPI** para disponibilização de dados e integração com projetos.
+
+- 🌍 **Projetos com Dados Reais**  
+  Estudos com datasets públicos como **IBGE**, **Kaggle**, **APIs governamentais** e outras fontes abertas.
