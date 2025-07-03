@@ -20,3 +20,5 @@ vendas_df = vendas_df.rename(columns={'E-mail': 'E-mail Cliente'})
 
 
 vendas_df.to_csv(r'C:\Users\Pichau\Documents\estudos\modulos-python\Novo Vendas 2017.csv', sep=';', encoding='latin1')
+
+
