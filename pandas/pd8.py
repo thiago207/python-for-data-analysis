@@ -1,8 +1,6 @@
 import pandas as pd
 
 
-
-
 vendas_df = pd.read_csv(r'pandas\Contoso - Vendas - 2017.csv', sep=';')
 produtos_df = pd.read_csv(r'pandas\Contoso - Cadastro Produtos.csv', sep=';', encoding='latin1')
 lojas_df = pd.read_csv(f'pandas\Contoso - Lojas.csv', sep=';', encoding='latin1')
@@ -20,3 +18,5 @@ vendas_df = vendas_df.rename(columns={'E-mail': 'E-mail Cliente'})
 
 
 vendas_df.to_csv(r'C:\Users\Pichau\Documents\estudos\modulos-python\Novo Vendas 2017.csv', sep=';', encoding='latin1')
+
+
