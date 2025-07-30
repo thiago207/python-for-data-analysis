@@ -35,32 +35,6 @@ Dominar as principais ferramentas do ecossistema Python aplicadas ao tratamento,
 
 ---
 
-### 🔍 Web Scraping e Automação
-
-- **requests**  
-  Requisições HTTP para acesso a APIs e páginas web.
-
-- **BeautifulSoup**  
-  Extração de informações de HTML e XML.
-
-- **Selenium**  
-  Automação de interações com páginas web dinâmicas.
-
----
-
-### 🧠 Machine Learning e Estatística
-
-- **scikit-learn**  
-  Modelos preditivos, pipelines e validação de algoritmos.
-
-- **scipy**  
-  Ferramentas científicas para estatísticas e álgebra linear.
-
-- **statsmodels**  
-  Modelos estatísticos clássicos e análise de séries temporais.
-
----
-
 ## 🚀 Outros Tópicos em Estudo
 
 - 📊 **Integração com Bancos de Dados**  
