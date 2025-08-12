@@ -26,5 +26,5 @@ if lista_acoes:
     dados = dados[lista_acoes]
     if len(lista_acoes) == 1:
         acao_unica = lista_acoes[0]
-        dados = dados.rename
+        dados = dados.rename({'columns':''})
 grafico = st.line_chart(dados)
