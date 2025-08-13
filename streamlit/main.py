@@ -48,6 +48,7 @@ if tickers_selecionados:
 else:
     st.warning("Selecione pelo menos uma ação.")
 
+
 data_inicial = dados.index.min().to_pydatetime()
 data_final = dados.index.max().to_pydatetime()
 intervalo_data = st.sidebar.slider('Selecione o periodo', min_value=data_inicial, max_value=data_final, value=(data_inicial, data_final))
@@ -55,5 +56,15 @@ intervalo_data = st.sidebar.slider('Selecione o periodo', min_value=data_inicial
 dados = dados.loc[intervalo_data[0]: intervalo_data[1]]
 
 
+st.write('''
+#### Performance dos Ativos
+Essa foi a performance dos ativos selecionados:
+''')
+
+texto_performance = ''
+
+for ativo in tickers:
+    performance_ativo = dados[ativo].iloc[-1] / dados[ativo].iloc[0] - 1
+    performance_ativo = float(performance_ativo)
 
 
