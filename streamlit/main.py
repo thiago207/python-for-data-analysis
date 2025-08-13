@@ -33,7 +33,7 @@ st.write("O gráfico apresenta a evolução do preço das ações brasileiras ao
 dados = carregar_dados(tickers)
 
 # Seleção
-tickers_selecionados = st.multiselect(
+tickers_selecionados = st.multiselect.sidebar(
     'Selecione as ações',
     options=tickers,
     default=tickers
@@ -48,3 +48,5 @@ if tickers_selecionados:
     st.line_chart(dados[tickers_selecionados])
 else:
     st.warning("Selecione pelo menos uma ação.")
+
+
