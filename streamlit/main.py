@@ -32,12 +32,6 @@ st.write("O gráfico apresenta a evolução do preço das ações brasileiras ao
 # Carregar dados
 dados = carregar_dados(tickers)
 
-# Mostrar tabela
-st.dataframe(dados)
-
-# Gráfico geral
-st.line_chart(dados)
-
 # Seleção
 tickers_selecionados = st.multiselect(
     'Selecione as ações',
@@ -46,6 +40,10 @@ tickers_selecionados = st.multiselect(
 )
 
 # Gráfico filtrado
+if tickers_selecionados:
+    if len(tickers_selecionados) == 1:
+        st.line_chart(dados[tickers_selecionados])
+
 if tickers_selecionados:
     st.line_chart(dados[tickers_selecionados])
 else:
