@@ -4,38 +4,49 @@ import yfinance as yf
 
 @st.cache_data
 def carregar_dados(tickers):
-    # Baixa os dados de todos os tickers de uma vez
-    dados = yf.download(tickers, start='2015-01-01', end='2025-01-01', group_by='ticker')
-    
-    # Extrai apenas os preços de fechamento
-    precos = pd.DataFrame()
-    for ticker in tickers:
-        if ticker in dados:
-            precos[ticker] = dados[ticker]['Close']
+    # Baixa dados
+    dados = yf.download(
+        tickers,
+        start='2015-01-01',
+        end='2025-01-01',
+        group_by='ticker'
+    )
+
+    # Se tiver MultiIndex, extrair apenas "Close"
+    if isinstance(dados.columns, pd.MultiIndex):
+        precos = dados.xs('Close', axis=1, level=1)
+    else:
+        precos = dados[['Close']]
+
+    # Renomear colunas para o nome do ticker
+    precos.columns = tickers
     return precos.dropna()
 
-# Lista de tickers (como lista Python)
+# Lista de tickers
 tickers = ["ITUB4.SA", "BBAS3.SA", "VALE3.SA", "ABEV3.SA", "PETR4.SA", "GGBR4.SA"]
 
-# Carrega os dados
+# Interface
+st.title("📈 App de preço de Ações")
+st.write("O gráfico apresenta a evolução do preço das ações brasileiras ao longo dos anos.")
+
+# Carregar dados
 dados = carregar_dados(tickers)
 
-# Interface do app
-st.write("""
-# App de preço de Ações  
-O gráfico apresenta a evolução do preço das ações brasileiras ao longo dos anos
-""")
+# Mostrar tabela
+st.dataframe(dados)
 
-# Mostra os dados
-st.write(dados)
-
-# Exibe o gráfico
+# Gráfico geral
 st.line_chart(dados)
 
+# Seleção
 tickers_selecionados = st.multiselect(
     'Selecione as ações',
     options=tickers,
     default=tickers
 )
-dados_filtrados = dados[tickers_selecionados]
-st.line_chart(dados_filtrados)
+
+# Gráfico filtrado
+if tickers_selecionados:
+    st.line_chart(dados[tickers_selecionados])
+else:
+    st.warning("Selecione pelo menos uma ação.")
