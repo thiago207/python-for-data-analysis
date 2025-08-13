@@ -66,5 +66,5 @@ texto_performance = ''
 for ativo in tickers:
     performance_ativo = dados[ativo].iloc[-1] / dados[ativo].iloc[0] - 1
     performance_ativo = float(performance_ativo)
-
+    texto_performance = texto_performance + f'{ativo}: {performance_ativo * 100}'
 
