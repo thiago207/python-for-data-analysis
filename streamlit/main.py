@@ -41,6 +41,12 @@ tickers_selecionados = st.sidebar.multiselect(
     options=tickers
 )
 
+data_inicial = dados.index.min().to_pydatetime()
+data_final = dados.index.max().to_pydatetime()
+intervalo_data = st.sidebar.slider('Selecione o periodo', min_value=data_inicial, max_value=data_final, value=(data_inicial, data_final))
+
+dados = dados.loc[intervalo_data[0]: intervalo_data[1]]
+
 # Gráfico filtrado
 if tickers_selecionados:
     st.line_chart(dados[tickers_selecionados])
@@ -48,11 +54,6 @@ else:
     st.warning("Selecione pelo menos uma ação.")
 
 
-data_inicial = dados.index.min().to_pydatetime()
-data_final = dados.index.max().to_pydatetime()
-intervalo_data = st.sidebar.slider('Selecione o periodo', min_value=data_inicial, max_value=data_final, value=(data_inicial, data_final))
-
-dados = dados.loc[intervalo_data[0]: intervalo_data[1]]
 
 
 texto_performance = ''
@@ -60,8 +61,6 @@ texto_performance = ''
 if len(tickers_selecionados) == 0:
     tickers_selecionados = list(dados.columns)
 
-carteira = [1000 for acao in tickers_selecionados]
-total_inicial_carteira = sum(carteira)
 
 for ativo in tickers_selecionados:
     performance_ativo = dados[ativo].iloc[-1] / dados[ativo].iloc[0] - 1
@@ -76,15 +75,7 @@ for ativo in tickers_selecionados:
         texto_performance = texto_performance + f'  \n{ativo}: {performance_ativo:.1%}'
 
 
-total_final_carteira = sum(carteira)
-performance_carteira = total_final_carteira / total_inicial_carteira - 1
 
-if performance_carteira > 0:
-    texto_performance_carteira = f"Performance da carteira com todos os ativos: :green[{performance_carteira:.1%}]"
-elif performance_carteira < 0:
-    texto_performance_carteira = f"Performance da carteira com todos os ativos: :red[{performance_carteira:.1%}]"
-else:
-    texto_performance_carteira = f"Performance da carteira com todos os ativos: {performance_carteira:.1%}"
 
 
 st.write(f"""
@@ -93,6 +84,6 @@ Essa foi a perfomance de cada ativo no período selecionado:
 
 {texto_performance}
 
-{texto_performance_carteira}
+
 """)
 
