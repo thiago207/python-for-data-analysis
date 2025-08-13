@@ -55,16 +55,17 @@ intervalo_data = st.sidebar.slider('Selecione o periodo', min_value=data_inicial
 dados = dados.loc[intervalo_data[0]: intervalo_data[1]]
 
 
-
 texto_performance = ''
 
 if len(tickers_selecionados) == 0:
     tickers_selecionados = list(dados.columns)
 
+carteira = [1000 for acao in tickers_selecionados]
+total_inicial_carteira = sum(carteira)
+
 for ativo in tickers_selecionados:
     performance_ativo = dados[ativo].iloc[-1] / dados[ativo].iloc[0] - 1
     performance_ativo = float(performance_ativo)
-    texto_performance = texto_performance + f'  \n{ativo}: {performance_ativo:.1%}'
 
     if performance_ativo > 0:
         #  :cor[texto]
@@ -72,7 +73,19 @@ for ativo in tickers_selecionados:
     elif performance_ativo < 0:
         texto_performance = texto_performance + f'  \n{ativo}: :red[{performance_ativo:.1%}]'
     else:
-        texto_performance = texto_performance + f'  \n{ativo}: :yellow[{performance_ativo:.1%}]'
+        texto_performance = texto_performance + f'  \n{ativo}: {performance_ativo:.1%}'
+
+
+total_final_carteira = sum(carteira)
+performance_carteira = total_final_carteira / total_inicial_carteira - 1
+
+if performance_carteira > 0:
+    texto_performance_carteira = f"Performance da carteira com todos os ativos: :green[{performance_carteira:.1%}]"
+elif performance_carteira < 0:
+    texto_performance_carteira = f"Performance da carteira com todos os ativos: :red[{performance_carteira:.1%}]"
+else:
+    texto_performance_carteira = f"Performance da carteira com todos os ativos: {performance_carteira:.1%}"
+
 
 st.write(f'''
 #### Performance dos Ativos
