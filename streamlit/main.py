@@ -87,10 +87,12 @@ else:
     texto_performance_carteira = f"Performance da carteira com todos os ativos: {performance_carteira:.1%}"
 
 
-st.write(f'''
-#### Performance dos Ativos
-Essa foi a performance dos ativos selecionados:
-         
+st.write(f"""
+### Performance dos Ativos
+Essa foi a perfomance de cada ativo no período selecionado:
 
-         {texto_performance}
-''')
+{texto_performance}
+
+{texto_performance_carteira}
+""")
+
