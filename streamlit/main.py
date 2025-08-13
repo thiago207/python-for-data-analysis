@@ -32,6 +32,9 @@ st.write("O gráfico apresenta a evolução do preço das ações brasileiras ao
 # Carregar dados
 dados = carregar_dados(tickers)
 
+
+
+
 # Seleção
 tickers_selecionados = st.sidebar.multiselect(
     'Selecione as ações',
@@ -39,16 +42,18 @@ tickers_selecionados = st.sidebar.multiselect(
     default=tickers
 )
 
+# Gráfico filtrado
+if tickers_selecionados:
+    st.line_chart(dados[tickers_selecionados])
+else:
+    st.warning("Selecione pelo menos uma ação.")
+
 data_inicial = dados.index.min().to_pydatetime()
 data_final = dados.index.max().to_pydatetime()
 intervalo_data = st.sidebar.slider('Selecione o periodo', min_value=data_inicial, max_value=data_final, value=(data_inicial, data_final))
 
 dados = dados.loc[intervalo_data[0]: intervalo_data[1]]
 
-# Gráfico filtrado
-if tickers_selecionados:
-    st.line_chart(dados[tickers_selecionados])
-else:
-    st.warning("Selecione pelo menos uma ação.")
+
 
 
