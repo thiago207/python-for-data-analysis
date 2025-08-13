@@ -38,8 +38,7 @@ dados = carregar_dados(tickers)
 # Seleção
 tickers_selecionados = st.sidebar.multiselect(
     'Selecione as ações',
-    options=tickers,
-    default=tickers
+    options=tickers
 )
 
 # Gráfico filtrado
@@ -56,15 +55,29 @@ intervalo_data = st.sidebar.slider('Selecione o periodo', min_value=data_inicial
 dados = dados.loc[intervalo_data[0]: intervalo_data[1]]
 
 
-st.write('''
-#### Performance dos Ativos
-Essa foi a performance dos ativos selecionados:
-''')
 
 texto_performance = ''
 
-for ativo in tickers:
+if len(tickers_selecionados) == 0:
+    tickers_selecionados = list(dados.columns)
+
+for ativo in tickers_selecionados:
     performance_ativo = dados[ativo].iloc[-1] / dados[ativo].iloc[0] - 1
     performance_ativo = float(performance_ativo)
-    texto_performance = texto_performance + f'{ativo}: {performance_ativo * 100}'
+    texto_performance = texto_performance + f'  \n{ativo}: {performance_ativo:.1%}'
 
+    if performance_ativo > 0:
+        #  :cor[texto]
+        texto_performance = texto_performance + f'  \n{ativo}: :green[{performance_ativo:.1%}]'
+    elif performance_ativo < 0:
+        texto_performance = texto_performance + f'  \n{ativo}: :red[{performance_ativo:.1%}]'
+    else:
+        texto_performance = texto_performance + f'  \n{ativo}: :yellow[{performance_ativo:.1%}]'
+
+st.write(f'''
+#### Performance dos Ativos
+Essa foi a performance dos ativos selecionados:
+         
+
+         {texto_performance}
+''')
