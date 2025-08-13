@@ -31,10 +31,11 @@ st.write(dados)
 
 # Exibe o gráfico
 st.line_chart(dados)
-lista_acoes = st.multiselect("Escolha as ações para exibir no gráfico", dados.columns)
-if lista_acoes:
-    dados = dados[lista_acoes]
-    if len(lista_acoes) == 1:
-        acao_unica = lista_acoes[0]
-        dados = dados.rename(columns={acao_unica:'Close'})
-grafico = st.line_chart(dados)
+
+tickers_selecionados = st.multiselect(
+    'Selecione as ações',
+    options=tickers,
+    default=tickers
+)
+dados_filtrados = dados[tickers_selecionados]
+st.line_chart(dados_filtrados)
