@@ -41,6 +41,8 @@ tickers_selecionados = st.sidebar.multiselect(
     options=tickers
 )
 
+
+#INTERVADO DE DATA
 data_inicial = dados.index.min().to_pydatetime()
 data_final = dados.index.max().to_pydatetime()
 intervalo_data = st.sidebar.slider('Selecione o periodo', min_value=data_inicial, max_value=data_final, value=(data_inicial, data_final))
